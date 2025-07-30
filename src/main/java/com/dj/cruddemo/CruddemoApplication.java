@@ -29,8 +29,19 @@ public class CruddemoApplication {
 
 			// queryForStudentsByLastName(studentDAO);
 
-			updateStudent(studentDAO);
+			// updateStudent(studentDAO);
+
+			deleteStudent(studentDAO);
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		// delete the student
+		int studentId = 3;
+
+		System.out.println("Deleting student with id: " + studentId);
+
+		studentDAO.delete(studentId);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
@@ -40,10 +51,15 @@ public class CruddemoApplication {
 		System.out.println("Getting student with id: " + studentId);
 		Student myStudent = studentDAO.findById(studentId);
 
+		// display student
+		System.out.println("Found the student: " + myStudent.toString());
+
 		System.out.println("Updating student ...");
 
-		// change first name to "Scooby"
-		myStudent.setFirstName("Scooby");
+		// change first name to "John"
+		myStudent.setFirstName("John");
+
+		// update the student
 		studentDAO.update(myStudent);
 
 		// display updated student
